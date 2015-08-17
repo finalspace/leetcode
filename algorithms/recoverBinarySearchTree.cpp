@@ -43,8 +43,8 @@
  * };
  */
  
- //bad solution
- //300ms(slow)
+ 
+ //52(good)
 class Solution1 {
 public:
     void recoverTree(TreeNode *root) {
