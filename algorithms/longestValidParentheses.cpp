@@ -15,6 +15,8 @@
 *               
 **********************************************************************************/
 
+//utilizing stack storing the invalid position
+//slighter slower but smart solution
 //12ms
 class Solution1 {
 public:
@@ -45,8 +47,41 @@ public:
 //dp
 //if "(" is before current ")" dp[i] = dp[i-2]
 //if ")" is before current ")", and more before is a "(" => "( (...) )" dp[i] = dp[i - 1] + 2 + dp[i - dp[i - 1] - 2];
+//8ms(best)
+class Solution2 {
+public:
+    int longestValidParentheses(string s) {
+        int res = 0;
+		vector<int> dp(s.size(), 0);
+		for (int i = 1; i < s.size(); i++) {
+			if ((s[i]) == '(') {
+				dp[i] = 0;
+				continue;
+			}
+			else if (s[i - 1] == '(') {
+				if (i-2>=0) dp[i] = dp[i - 2] + 2;
+				else dp[i] = 2;
+			}
+			else if (s[i - 1] == ')') {
+				if ((i - dp[i - 1] - 1 >= 0) && (s[i - dp[i - 1] - 1] == '(')) {
+					if (i - dp[i - 1] - 2 >= 0) dp[i] = dp[i - 1] + 2 + dp[i - dp[i - 1] - 2];
+					else dp[i] = dp[i - 1] + 2;
+				}
+			}
+		}
+		for (int i = 0; i < s.size(); i++) {
+			res = max(res, dp[i]);
+		}
+		return res;
+    }
+};
+
+//dp
+//if "(" is before current ")" dp[i] = dp[i-2]
+//if ")" is before current ")", and more before is a "(" => "( (...) )" dp[i] = dp[i - 1] + 2 + dp[i - dp[i - 1] - 2];
+//map is slow
 //72ms
-class Solution {
+class Solution3 {
 public:
     int longestValidParentheses(string s) {
         int res = 0;
