@@ -32,6 +32,7 @@
  */
  
  //reverse every k nodes
+ //one pass
  //28ms
 class Solution {
 public:
