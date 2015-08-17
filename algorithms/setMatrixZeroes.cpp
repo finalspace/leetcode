@@ -20,7 +20,7 @@
 
 //in place
 //88ms(good)
-class Solution {
+class Solution1 {
 public:
     void setZeroes(vector<vector<int>>& matrix) {
         int m = matrix.size(), n = matrix[0].size();
@@ -46,7 +46,7 @@ public:
 
 //helper space
 //84ms(best)
-class Solution {
+class Solution2 {
 public:
     void setZeroes(vector<vector<int>>& matrix) {
         if (matrix.empty()) return;
