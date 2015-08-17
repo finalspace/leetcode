@@ -91,33 +91,33 @@ public:
 };
 
 //8ms
-class Solution4 {
+class Solution8ms {
 public:
     string longestPalindrome(string s) {
-        if (s.empty()) return "";
-		int start = 0;
-		int longest = 1;
-		for (int i = 1; i < s.size(); i++) {
-			if ((s.size() - i) * 2 - 1 < longest)
-				break;
-			int j = i - 1;
-			int k = i + 1;
-			while ((j >= 0) && (s[j] == s[i])) {
-				j--;
-			}
-			while ((k<s.size()) && (s[k] == s[i])) {
-				k++;
-			}
-			i = k - 1;
-			while ((j >= 0) && (k < s.size()) && (s[j] == s[k])) {
-				j--;
-				k++;
-			}
-			if (k - j - 1 > longest) {
-				start = j + 1;
-				longest = k - j - 1;
-			}
+	if (s.empty()) return "";
+	int start = 0;
+	int longest = 1;
+	for (int i = 1; i < s.size(); i++) {
+		if ((s.size() - i) * 2 - 1 < longest)
+			break;
+		int j = i - 1;
+		int k = i + 1;
+		while ((j >= 0) && (s[j] == s[i])) {
+			j--;
 		}
-		return s.substr(start, longest);
+		while ((k<s.size()) && (s[k] == s[i])) {
+			k++;
+		}
+		i = k - 1;
+		while ((j >= 0) && (k < s.size()) && (s[j] == s[k])) {
+			j--;
+			k++;
+		}
+		if (k - j - 1 > longest) {
+			start = j + 1;
+			longest = k - j - 1;
+		}
+	}
+	return s.substr(start, longest);
     }
 };
