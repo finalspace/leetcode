@@ -18,7 +18,9 @@
 *               
 **********************************************************************************/
 
-class Solution {
+//store words in map (straightforwad solution)
+//768ms
+class Solution1 {
 public:
     vector<int> findSubstring(string s, vector<string>& words) {
         vector<int> res;
@@ -46,7 +48,8 @@ public:
 		return res;
     }
 };
-class Solution {
+
+class Solution2 {
 public:
     vector<int> findSubstring(string s, vector<string>& words) {
         unordered_map<string, int> counts;
