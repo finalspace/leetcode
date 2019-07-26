@@ -1,0 +1,49 @@
+#include <iostream>
+using namespace std;
+
+
+class Base
+{
+   	public:
+      	Base(){ cout<<"Constructing Base"<<endl;}
+      	
+     // this is a destructor:
+	
+	virtual ~Base(){ cout<<"Destroying Base"<<endl;}
+};
+
+class Derive: public Base
+{
+        public:
+       	Derive(){ cout<<"Constructing Derive"<<endl;}
+       	
+       	~Derive(){ cout<<"Destroying Derive"<<endl;}
+ };
+
+class Animal 
+{
+int weight;
+
+public:
+
+int getWeight() { return weight;};
+
+};
+
+class Tiger : virtual public Animal { /* ... */ };
+
+class Lion : virtual public Animal { /* ... */ }	
+						
+class Liger : public Tiger, public Lion { /* ... */ };	
+
+
+void main()
+{
+    	Base *basePtr = new Derive();
+	    //Derive *basePtr = new Derive();
+        
+        delete basePtr;
+		Liger lg ;
+		int weight = lg.getWeight();
+
+}
