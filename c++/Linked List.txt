@@ -1,0 +1,3 @@
+Problem 21
+
+Linus once said "People who understand pointers just use a ¡°pointer to the entry pointer¡±, and initialize that with the address of the list_head. And then as they traverse the list, they can remove the entry without using any conditionals, by just doing a ¡°*pp = entry->next¡±"

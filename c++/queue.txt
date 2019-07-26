@@ -1,0 +1,31 @@
+underlying container
+
+queue:
+The underlying container may be one of the standard container class template or some other specifically designed container class. This underlying container shall support at least the following operations:
+empty
+size
+front
+back
+push_back
+pop_front
+
+The standard container classes deque and list fulfill these requirements. By default, if no container class is specified for a particular queue class instantiation, the standard container deque is used.
+std::list<>
+std::deque<>
+
+priority_queue:
+The underlying container may be any of the standard container class templates or some other specifically designed container class. The container shall be accessible through random access iterators and support the following operations:
+empty()
+size()
+front()
+push_back()
+pop_back()
+
+The standard container classes vector and deque fulfill these requirements. By default, if no container class is specified for a particular priority_queue class instantiation, the standard container vector is used.
+
+Support of random access iterators is required to keep a heap structure internally at all times. This is done automatically by the container adaptor by automatically calling the algorithm functions make_heap, push_heap and pop_heap when needed.
+
+vector<>
+deque<>
+
+priority_queue类似heap, 所以需要support random access以保证push_head, pop_head

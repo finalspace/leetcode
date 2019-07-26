@@ -1,0 +1,24 @@
+http://blog.csdn.net/v_JULY_v/article/details/6256463
+
+
+fibonacci hashing
+
+typedef unsigned short int HashIndexType;
+  
+HashIndexType hash(int key) {
+    //16bit:40503, 32:2654435769, 64:11400714819323198485
+    static const HashIndexType M = 40503;  
+    //s = w - n;  n : table size, w : input bit size
+    //if array size is 16, w = n, because 16 = 2^4,
+    //if bit is 16, table size is 2^10, then, S = 16 - 10 = 6
+    static const int S = 6;
+    return (HashIndexType)(M * key) >> S;
+}
+
+//for normal int, size is 32, then, M = 2654435769,  S = 32 - 4 = 28
+//index = (value * M) >> S
+
+
+
+
+////////////////////////////

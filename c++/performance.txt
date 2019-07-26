@@ -1,0 +1,12 @@
+You want contiguous memory. You really really want it. Iterating over any data in non-contiguous memory imposes a lot of cache misses in general and removes the ability for the compiler and CPU to do effective cache prefetching. This alone can kill performance.
+===================================================================================
+
+First, understand that allocating (and deallocating) memory is not a quick thing to do, generally, because it involves going out to the OS and asking it to do something. A list has to allocate memory every single time something is added, and deallocate it when it goes away.
+
+A deque, on the other hand, allocates in chunks. It will allocate less often than a list. Think of it as a list, but each node can hold multiple nodes. (Of course, I'd asuggest that you really learn how it works.)
+
+So, with that alone a deque should perform better, because it doesn't deal with memory as often. Mixed with the fact you're handling data of constant size, it probably won't have to allocate after the first pass through the data, whereas a list will be constantly allocating and deallocating.
+
+A second thing to understand is cache performance. Going out to RAM is slow, so when the CPU really needs to, it makes the best out of this time by taking a chunk of memory back with it, into cache. Because a deque allocates in memory chunks, it's likely that accessing an element in this container will cause the CPU to bring back the rest of the container as well. Now any further accesses to the deque will be speedy, because the data is in cache.
+
+This is unlike a list, where the data is allocated one at a time. This means that data could be spread out all over the place in memory, and cache performance will be bad.
